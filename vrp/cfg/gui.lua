@@ -30,7 +30,8 @@ cfg.static_menu_types = {
 
 -- list of static menu points
 cfg.static_menus = {
-  {"missions", 1855.13940429688,3688.68579101563,34.2670478820801}
+  {"missions", 1855.13940429688,3688.68579101563,34.2670478820801},
+  {"missions", -252.389709472656,-972.658874511719,31.2200050354004}  
 }
 
 return cfg

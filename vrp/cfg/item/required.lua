@@ -2,8 +2,9 @@
 local items = {}
 
 items["medkit"] = {"Medical Kit","Used to reanimate unconscious people.",nil,0.5}
-items["dirty_money"] = {"Dirty money","Illegally earned money.",nil,0}
+items["dirty_money"] = {"Dirty Money","Illegally earned money.",nil,0}
 items["repairkit"] = {"Repair Kit","Used to repair vehicles.",nil,0.5}
+
 
 -- money
 items["money"] = {"Money","Packed money.",function(args)
@@ -12,14 +13,15 @@ items["money"] = {"Money","Packed money.",function(args)
 
   choices["Unpack"] = {function(player,choice,mod)
     local user_id = vRP.getUserId(player)
-    if user_id then
+    if user_id ~= nil then
       local amount = vRP.getInventoryItemAmount(user_id, idname)
-      local ramount = vRP.prompt(player, "How much to unpack ? (max "..amount..")", "")
-      ramount = parseInt(ramount)
-      if vRP.tryGetInventoryItem(user_id, idname, ramount, true) then -- unpack the money
-        vRP.giveMoney(user_id, ramount)
-        vRP.closeMenu(player)
-      end
+      vRP.prompt(player, "How much to unpack ? (max "..amount..")", "", function(player,ramount)
+        ramount = parseInt(ramount)
+        if vRP.tryGetInventoryItem(user_id, idname, ramount, true) then -- unpack the money
+          vRP.giveMoney(user_id, ramount)
+          vRP.closeMenu(player)
+        end
+      end)
     end
   end}
 
@@ -33,7 +35,7 @@ items["money_binder"] = {"Money binder","Used to bind 1000$ of money.",function(
 
   choices["Bind money"] = {function(player,choice,mod) -- bind the money
     local user_id = vRP.getUserId(player)
-    if user_id then
+    if user_id ~= nil then
       local money = vRP.getMoney(user_id)
       if money >= 1000 then
         if vRP.tryGetInventoryItem(user_id, idname, 1, true) and vRP.tryPayment(user_id,1000) then
@@ -41,7 +43,7 @@ items["money_binder"] = {"Money binder","Used to bind 1000$ of money.",function(
           vRP.closeMenu(player)
         end
       else
-        vRPclient._notify(player,vRP.lang.money.not_enough())
+        vRPclient.notify(player,{vRP.lang.money.not_enough()})
       end
     end
   end}
@@ -55,8 +57,7 @@ end,0}
 local get_wname = function(weapon_id)
   local name = string.gsub(weapon_id,"WEAPON_","")
   name = string.upper(string.sub(name,1,1))..string.lower(string.sub(name,2))
-  -- lang translation support, ex: weapon.pistol = "Pistol", by default use the native name
-  return vRP.lang.weapon[string.lower(name)]({}, name)
+  return name
 end
 
 --- weapon body
@@ -74,11 +75,11 @@ local wbody_choices = function(args)
 
   choices["Equip"] = {function(player,choice)
     local user_id = vRP.getUserId(player)
-    if user_id then
+    if user_id ~= nil then
       if vRP.tryGetInventoryItem(user_id, fullidname, 1, true) then -- give weapon body
         local weapons = {}
         weapons[args[2]] = {ammo = 0}
-        vRPclient._giveWeapons(player, weapons)
+        vRPclient.giveWeapons(player, {weapons})
 
         vRP.closeMenu(player)
       end
@@ -109,20 +110,22 @@ local wammo_choices = function(args)
 
   choices["Load"] = {function(player,choice)
     local user_id = vRP.getUserId(player)
-    if user_id then
+    if user_id ~= nil then
       local amount = vRP.getInventoryItemAmount(user_id, fullidname)
-      local ramount = vRP.prompt(player, "Amount to load ? (max "..amount..")", "")
-      ramount = parseInt(ramount)
+      vRP.prompt(player, "Amount to load ? (max "..amount..")", "", function(player,ramount)
+        ramount = parseInt(ramount)
 
-      local uweapons = vRPclient.getWeapons(player)
-      if uweapons[args[2]] then -- check if the weapon is equiped
-        if vRP.tryGetInventoryItem(user_id, fullidname, ramount, true) then -- give weapon ammo
-          local weapons = {}
-          weapons[args[2]] = {ammo = ramount}
-          vRPclient._giveWeapons(player, weapons,false)
-          vRP.closeMenu(player)
-        end
-      end
+        vRPclient.getWeapons(player, {}, function(uweapons)
+          if uweapons[args[2]] ~= nil then -- check if the weapon is equiped
+            if vRP.tryGetInventoryItem(user_id, fullidname, ramount, true) then -- give weapon ammo
+              local weapons = {}
+              weapons[args[2]] = {ammo = ramount}
+              vRPclient.giveWeapons(player, {weapons,false})
+              vRP.closeMenu(player)
+            end
+          end
+        end)
+      end)
     end
   end}
 

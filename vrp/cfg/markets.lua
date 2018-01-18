@@ -10,41 +10,60 @@ cfg.market_types = {
 
     -- list itemid => price
     -- Drinks
-    ["milk"] = 2,
-    ["water"] = 2,
-    ["coffee"] = 4,
-    ["tea"] = 4,
-    ["icetea"] = 8,
-    ["orangejuice"] = 8,
-    ["gocagola"] = 12,
-    ["redgull"] = 12,
-    ["lemonlimonad"] = 14,
-    ["vodka"] = 30,
+    ["milk"] = 4,
+    ["water"] = 1.25,
+    ["coffee"] = 3.00,
+    ["tea"] = 3.00,
+    ["icetea"] = 2.25,
+    ["orangejuice"] = 3.00,
+    ["gocagola"] = 1.75,
+    ["redgull"] = 3.30,
+    ["lemonlimonad"] = 3.00,
+    ["vodka"] = 10.00,
 
     --Food
     ["bread"] = 2,
-    ["donut"] = 2,
-    ["tacos"] = 8,
-    ["sandwich"] = 20,
-    ["kebab"] = 20,
-    ["pdonut"] = 65,
+    ["donut"] = 1,
+    ["tacos"] = 5,
+    ["sandwich"] = 5,
+    ["kebab"] = 6,
+    ["pdonut"] = 2
   },
-  ["drugstore"] = {
-    _config = {blipid=51, blipcolor=2},
-    ["medkit"] = 75,
-    ["pills"] = 10
+
+  ["vending"] = {
+    _config = {},
+    ["water"] = 2,
+    ["coffee"] = 4,
+    ["tea"] = 4,
+    ["gocagola"] = 3,
+
+    --Food
+    ["donut"] = 1,
+    ["sandwich"] = 5
   },
+  
+  ["emergencyloadout"] = {
+    _config = {blipid=51, blipcolor=68, permissions={"emergency.market"}},
+    ["medkit"] = 0,
+    ["pills"] = 0
+  },
+  
+  ["plantation"] = {
+    _config = {blipid=473, blipcolor=4, permissions={"drugseller.market"}},
+    ["seeds"] = 50,
+	["benzoilmetilecgonina"] = 80,
+	["harness"] = 100
+  },
+  
   ["tools"] = {
-    _config = {blipid=51, blipcolor=47},
-    ["repairkit"] = 50
+    _config = {blipid=402, blipcolor=47, permissions={"repair.market"}},
+    ["repairkit"] = 5
   },
-  ["TCG"] = { -- need vRP-TCG extension
-    _config = {blipid=408, blipcolor=2},
-    ["tcgbooster|0|5"] = 10,
-    ["tcgbooster|1|5"] = 100,
-    ["tcgbooster|2|5"] = 1000,
-    ["tcgbooster|3|5"] = 10000,
-    ["tcgbooster|4|5"] = 100000
+  ["policearmor"] = {
+	_config = {blipid=402, blipcolor=47, permissions={"police.armor"}},
+	["body_armor"] = 0,
+	["medkit"] = 0,
+	["pills"] = 0
   }
 }
 
@@ -71,7 +90,14 @@ cfg.markets = {
   {"food",-1820.55725097656,792.770568847656,138.113250732422}, 
   {"food",-1486.76574707031,-379.553985595703,40.163387298584}, 
   {"food",-1223.18127441406,-907.385681152344,12.3263463973999}, 
-  {"food",-707.408996582031,-913.681701660156,19.2155857086182}
+  {"food",-707.408996582031,-913.681701660156,19.2155857086182},
+  {"emergencyloadout",242.42835998535,-1382.1253662109,39.534385681152}, -- spawn
+  {"emergencyloadout",1841.4317626953,3673.5891113281,34.276752471924}, -- Sandy Shores
+  {"emergencyloadout",-243.3074798584,6326.2265625,32.426181793213}, -- Paleto Bay
+  {"plantation",1789.86682128906,3896.16943359375,34.3892250061035},
+  {"tools",408.95471191406,-1622.8607177734,29.291942596436},
+  {"vending",436.70712280273,-986.0849609375,30.689603805542},
+  {"policearmor",458.24960327148,-979.05041503906,30.689582824707}
 }
 
 return cfg

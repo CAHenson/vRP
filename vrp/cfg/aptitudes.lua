@@ -14,12 +14,30 @@ local cfg = {}
 cfg.gaptitudes = {
   ["physical"] = {
     _title = "Physical",
-    ["strength"] = {"Strength", 30, 105} -- required, level 3 to 6 (by default, can carry 10kg per level)
+    ["strength"] = {"Strength", 30, 275} -- required, level 3 to 6 (by default, can carry 10kg per level)
   },
   ["science"] = {
     _title = "Science",
-    ["chemicals"] = {"Study of chemicals", 0, -1}, -- example
-    ["mathematics"] = {"Study of mathematics", 0, -1} -- example
+    ["chemicals"] = {"Chemistry", 0, -1}, -- example
+    ["mathematics"] = {"Mathematics", 0, -1} -- example
+  },
+  ["skill"] = {
+	_title = "Skills",
+	["mining"]={"Mining", 0, -1},
+	["refining"]={"Refining", 0, -1}
+  },
+  ["laboratory"] = {
+    _title = "Drug Manufacturing",
+	["cocaine"] = {"Cocaine Processing", 0, -1},
+	["weed"] = {"Marijuana Processing", 0, -1},
+	["lsd"] = {"LSD Synthesizing", 0, -1}
+  },
+  ["hacker"] = {
+    _title = "Hacking",
+	["logic"] = {"Logic", 0, -1},
+	["c++"] = {"C++", 0, -1},
+	["lua"] = {"LUA", 0, -1},
+	["hacking"] = {"Hacking", 0, -1}
   }
 }
 

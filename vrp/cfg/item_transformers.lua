@@ -6,17 +6,246 @@ local cfg = {}
 
 cfg.item_transformers = {
   -- example of harvest item transformer
+    {
+    name="Fishing", -- menu name
+    permissions = {"mission.delivery.fish"}, -- you can add permissions
+    r=0,g=125,b=255, -- color
+    max_units=100000,
+    units_per_minute=2,
+    x=743.19586181641,y=3895.3967285156,z=30.5, 
+    radius=3, height=1.5, -- area
+    recipes = {
+      ["Catch some Catfish"] = { -- action name
+        description="Trying to catch some Catfish", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["catfish"] = 1
+        }
+      },
+      ["Catch some Bass"] = { -- action name
+        description="Trying to catch some Bass", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["bass"] = 1
+        }
+      }
+    }
+  },
+    --[[{
+	name="Mining",
+	permissions = {"miner.service"},
+	r=0,g=125,b=255,
+	max_units=100000,
+	units_per_minute=2,
+	x=2911.43359375,y=2778.8454589844,z=45.427436828613,
+	radius=10, height=3.5,
+	recipes = {
+		["Mine"] = {
+			description="Trying to mine",
+			in_money=0,
+			out_money=0,
+			reagents={},
+			products={
+				["Coal"] = 5,
+				["Copper"] = 4,
+				["Iron"] = 3,
+				["Silver"] = 2,
+				["Gold"] = 1,
+				["Diamond"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.mining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		},
+		["Mine some Coal"] = {
+			description="Trying to mine some Coal",
+			in_money=0,
+			out_money=0,
+			reagents={},
+			products={
+				["Coal"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.mining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		},
+		["Mine some Copper"] = {
+			description="Trying to mine some Copper",
+			in_money=0,
+			out_money=0,
+			reagents={},
+			products={
+				["Copper"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.mining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		},
+		["Mine some Iron"] = {
+			description="Trying to mine some Iron",
+			in_money=0,
+			out_money=0,
+			reagents={},
+			products={
+				["Iron"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.mining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		}
+	}
+	},
+	{
+	name="Refining",
+	permissions = {"miner.service"},
+	r=0,g=125,b=255,
+	max_units=100000,
+	units_per_minute=100000,
+	x=2681.6286621094,y=2796.240234375,z=40.69828414917,
+	radius=3, height=1.5,
+	recipes = {
+		["Refine some Copper"] = {
+			description="Trying to refine some Copper",
+			in_money=5,
+			out_money=0,
+			reagents={
+				["Copper"] = 1
+			},
+			products={
+				["Copper2"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.refining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		},
+		["Refine some Gold"] = {
+			description="Trying to refine some Gold",
+			in_money=5,
+			out_money=0,
+			reagents={
+				["Gold"] = 1
+			},
+			products={
+				["Gold2"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.refining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		},
+		["Refine some Iron"] = {
+			description="Trying to refine some Iron",
+			in_money=5,
+			out_money=0,
+			reagents={
+				["Iron"] = 1
+			},
+			products={
+				["Iron2"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.refining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		},
+		["Refine some Silver"] = {
+			description="Trying to refine some Silver",
+			in_money=5,
+			out_money=0,
+			reagents={
+				["Silver"] = 1
+			},
+			products={
+				["Silver2"] = 1
+			},
+			aptitudes={ -- optional
+				["skill.refining"] = 0.2 -- "group.aptitude", give 1 exp per unit
+			}
+		}
+	},--]]
+      {
+    name="Weapons Smuggler", -- menu name
+    permissions = {"mission.weapons.smuggler"}, -- you can add permissions
+    r=0,g=125,b=255, -- color
+    max_units=275,
+    units_per_minute=2,
+    x=-343.28500366211,y=6098.6586914063,z=31.327739715576,
+    radius=3, height=1.5, -- area
+    recipes = {
+      ["Craft AK 47 ($1000)"] = { -- action name
+        description="Grabbing AK's", -- action description
+        in_money=1000, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["AK47"] = 1
+        }
+      },
+      ["Craft M4A1 ($1000)"] = { -- action name
+        description="Grabbing M4's", -- action description
+        in_money=1000, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["M4A1"] = 1
+        }
+      }
+    }
+  },
   {
-    name="Water bottles/tacos tree", -- menu name
+  name="Airport Cargo", -- menu name
+    permissions = {"mission.pilot.cargo"}, -- you can add permissions
+    r=0,g=125,b=255, -- color
+    max_units=100000,
+    units_per_minute=10,
+    x=-1094,y=-2910,z=13.94,
+	
+    radius=30, height=10, -- area
+    recipes = {
+      ["Airport Cargo"] = { -- action name
+        description="Collecting Cargo for Transport", -- action description
+        in_money=0, -- money taken per unit
+        out_money=1, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["cargo"] = 10
+        }
+      }
+    }
+  },
+{
+    name="Medical Transport", -- menu name
+    permissions = {"mission.delivery.medical"}, -- you can add permissions
+    r=0,g=125,b=255, -- color
+    max_units=100000,
+    units_per_minute=2,
+    x=2213.0520019531,y=5577.5981445313,z=53.795757293701,
+    radius=3, height=1.5, -- area
+    recipes = {
+      ["Gather Medical Weed"] = { -- action name
+        description="Gathering Medical Weed", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["Medical Weed"] = 1
+        }
+      }
+	 }
+  },
+  {
+    name="Klap Foods", -- menu name
     -- permissions = {"harvest.water_bottle_tacos"}, -- you can add permissions
     r=0,g=125,b=255, -- color
     max_units=20,
     units_per_minute=10,
-    x=1861,y=3680.5,z=33.26, -- pos
+    x=-1692.6646728516,y=-1086.3079833984,z=13.152559280396, -- pos
     radius=5, height=1.5, -- area
     recipes = {
-      ["Harvest water"] = { -- action name
-        description="Harvest some water bottles.", -- action description
+      ["Bottle Water"] = { -- action name
+        description="Bottling water bottles.", -- action description
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={}, -- items taken per unit
@@ -24,13 +253,49 @@ cfg.item_transformers = {
           ["water"] = 1
         }
       },
-      ["Harvest tacos"] = { -- action name
-        description="Harvest some tacos.", -- action description
+	  ["Make Sandwich"] = { -- action name
+        description="Harvest some sandwich.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["sandwich"] = 1
+        }
+      },
+      ["Make Donut"] = { -- action name
+        description="Making some donut.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["donut"] = 1
+        }
+      },
+      ["Make Tacos"] = { -- action name
+        description="Making some tacos.", -- action description
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={}, -- items taken per unit
         products={ -- items given per unit
           ["tacos"] = 1
+        }
+      },
+	  ["Get Coca Cola"] = { -- action name
+        description="Get Goca Gola.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["gocagola"] = 1
+        }
+      },
+      ["Buy Vodka"] = { -- action name
+        description="Buy vodka. $6", -- action description
+        in_money=6, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={ -- items given per unit
+          ["vodka"] = 1
         }
       }
     }
@@ -42,7 +307,7 @@ cfg.item_transformers = {
     name="Body training", -- menu name
     r=255,g=125,b=0, -- color
     max_units=1000,
-    units_per_minute=1000,
+    units_per_minute=1,
     x=-1202.96252441406,y=-1566.14086914063,z=4.61040639877319,
     radius=7.5, height=1.5, -- area
     recipes = {
@@ -53,11 +318,167 @@ cfg.item_transformers = {
         reagents={}, -- items taken per unit
         products={}, -- items given per unit
         aptitudes={ -- optional
-          ["physical.strength"] = 1 -- "group.aptitude", give 1 exp per unit
+          ["physical.strength"] = 0.2 -- "group.aptitude", give 1 exp per unit
         }
       }
     }
-  }
+  },
+  {
+    name="Hacker", -- menu name
+	permissions = {"hacker.credit_cards"}, -- you can add permissions
+    r=255,g=125,b=0, -- color
+    max_units=5,
+    units_per_minute=1,
+    x=707.357238769531,y=-966.98876953125,z=30.4128551483154,
+    radius=2, height=1.0, -- area
+    recipes = {
+      ["hacking"] = { -- action name
+        description="Hacking credit cards.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={
+		["credit"] = 1,
+		["dirty_money"] = 250
+		}, -- items given per unit
+        aptitudes={ -- optional
+          ["hacker.hacking"] = 0.2 -- "group.aptitude", give 1 exp per unit
+        }
+      }
+    }
+  },
+  {
+    name="Driver License", -- menu name
+    r=255,g=125,b=0, -- color
+    max_units=1,
+    units_per_minute=1,
+    x=-2437.08352661133,y=-993.96734619141,z=30.68959236145, 
+    radius=2, height=1.0, -- area
+    recipes = {
+      ["Driver"] = { -- action name
+       description="Buy a Driver License.", -- action description`
+        in_money=300, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={
+		["driver"] = 1
+		}, -- items given per unit
+        aptitudes={} -- optional
+      }
+    }
+  },
+  {
+    name="Bank Driver Mission", -- menu name
+	permissions = {"bankdriver.money"}, -- you can add permissions
+    r=255,g=125,b=0, -- color
+    max_units=3,
+    units_per_minute=3,
+    x=254.00050354004,y=225.45916748047,z=101.87570953369,
+    radius=2, height=1.0, -- area
+    recipes = {
+      ["Bank Money"] = { -- action name
+       description="This bank money needs transferred ASAP.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={}, -- items taken per unit
+        products={
+		["bank_money"] = 25000
+		}, -- items given per unit
+        aptitudes={} -- optional
+      }
+    }
+  },
+ -- {
+   -- name="Robbery Bank", -- menu name
+   -- r=255,g=125,b=0, -- color
+   -- max_units=600,
+   -- units_per_minute=1,
+   -- x=265.94982910156,y=213.54983520508,z=101.68338775635,
+   -- radius=2, height=1.0, -- area
+   -- recipes = {
+     -- ["Bank Money"] = { -- action name
+      -- description="get the money.", -- action description
+       -- in_money=0, -- money taken per unit
+       -- out_money=0, -- money earned per unit
+      --  reagents={}, -- items taken per unit
+      --  products={
+	--	["dirty_money"] = 0
+	--	}, -- items given per unit
+       -- aptitudes={} -- optional
+     -- }
+   -- }
+ -- },
+  {
+    name="Drug Lab", -- menu name
+	permissions = {"harvest.weed"}, -- job drug dealer required to use
+    r=0,g=255,b=0, -- color
+    max_units=200,
+    units_per_minute=10,
+    x=-77.722381591797,y=6223.626953125,z=31.089864730835, -- pos (needed for public use lab tools)
+    radius=1.1, height=1.5, -- area
+    recipes = {
+      ["cocaine"] = { -- action name
+        description="make cocaine", -- action description
+        in_money=30, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["benzoilmetilecgonina"] = 1
+        },
+        products={ -- items given per unit
+          ["cocaine"] = 5
+        },
+        aptitudes={ -- optional
+          ["laboratory.cocaine"] = 3, -- "group.aptitude", give 1 exp per unit
+          ["science.chemicals"] = 6
+        }
+      },
+      ["weed"] = { -- action name
+        description="make weed", -- action description
+        in_money=20, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["seeds"] = 1
+        },
+        products={ -- items given per unit
+          ["weed"] = 10
+        },
+        aptitudes={ -- optional
+          ["laboratory.weed"] = 3, -- "group.aptitude", give 1 exp per unit
+          ["science.chemicals"] = 6
+        }
+      },
+      ["lsd"] = { -- action name
+          description="make lsd", -- action description
+          in_money=50, -- money taken per unit
+          out_money=0, -- money earned per unit
+          reagents={ -- items taken per unit
+            ["harness"] = 1
+          },
+          products={ -- items given per unit
+            ["lsd"] = 3
+          },
+          aptitudes={ -- optional
+            ["laboratory.lsd"] = 3, -- "group.aptitude", give 1 exp per unit
+            ["science.chemicals"] = 6
+          }
+        }
+      },
+	  ["pills"] = { -- action name
+        description="Make Pills", -- action description
+        in_money=100, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={ -- items taken per unit
+          ["lsd"] = 1,
+		  ["cocaine"] = 1
+        },
+        products={ -- items given per unit
+          ["pills"] = 2
+        },
+        aptitudes={
+		  ["science.chemicals"] = 4
+		}
+      }
+    }
 }
 
 -- define transformers randomly placed on the map
@@ -65,28 +486,76 @@ cfg.hidden_transformers = {
   ["weed field"] = {
     def = {
       name="Weed field", -- menu name
-      -- permissions = {"harvest.weed"}, -- you can add permissions
+      permissions = {"harvest.weed"}, -- you can add permissions
       r=0,g=200,b=0, -- color
-      max_units=30,
-      units_per_minute=1,
+      max_units=600,
+      units_per_minute=5,
       x=0,y=0,z=0, -- pos
       radius=5, height=1.5, -- area
       recipes = {
         ["Harvest"] = { -- action name
-          description="Harvest some weed.", -- action description
+          description="Harvest some drugs.", -- action description
           in_money=0, -- money taken per unit
           out_money=0, -- money earned per unit
           reagents={}, -- items taken per unit
           products={ -- items given per unit
-            ["weed"] = 1
+            ["seeds"] = 1
           }
         }
       }
     },
     positions = {
-      {1873.36901855469,3658.46215820313,33.8029747009277},
-      {1856.33776855469,3635.12109375,34.1897926330566},
-      {1830.75390625,3621.44140625,33.8487205505371}
+      {2208.0104980469,5577.6987304688,53.739212036133}
+    }
+  },
+  ["cocaine dealer"] = {
+    def = {
+      name="Cocaine Dealer", -- menu name
+      permissions = {"harvest.weed"}, -- you can add permissions
+      r=0,g=200,b=0, -- color
+      max_units=600,
+      units_per_minute=5,
+      x=0,y=0,z=0, -- pos
+      radius=5, height=1.5, -- area
+      recipes = {
+        ["Harvest"] = { -- action name
+          description="Harvest some drugs.", -- action description
+          in_money=0, -- money taken per unit
+          out_money=0, -- money earned per unit
+          reagents={}, -- items taken per unit
+          products={ -- items given per unit
+            ["benzoilmetilecgonina"] = 1
+          }
+        }
+      }
+    },
+    positions = {
+      {-631.00543212891,-229.42568969727,38.057052612305}
+    }
+  },
+  ["lsd bar"] = {
+    def = {
+      name="LSD Bar", -- menu name
+      permissions = {"harvest.weed"}, -- you can add permissions
+      r=0,g=200,b=0, -- color
+      max_units=600,
+      units_per_minute=5,
+      x=0,y=0,z=0, -- pos
+      radius=5, height=1.5, -- area
+      recipes = {
+        ["Harvest"] = { -- action name
+          description="Harvest some drugs.", -- action description
+          in_money=0, -- money taken per unit
+          out_money=0, -- money earned per unit
+          reagents={}, -- items taken per unit
+          products={ -- items given per unit
+      			["harness"] = 1
+          }
+        }
+      }
+    },
+    positions = {
+      {1992.5993652344,3044.1806640625,47.215068817139}
     }
   }
 }
@@ -100,8 +569,9 @@ cfg.informer = {
     ["weed field"] = 20000
   },
   positions = {
-    {1821.12390136719,3685.9736328125,34.2769317626953},
-    {1804.2958984375,3684.12280273438,34.217945098877}
+    {2208.0104980469,5577.6987304688,53.739212036133},
+    {-631.00543212891,-229.42568969727,38.057052612305},
+	{1992.5993652344,3044.1806640625,47.215068817139}
   },
   interval = 60, -- interval in minutes for the reseller respawn
   duration = 10, -- duration in minutes of the spawned reseller
